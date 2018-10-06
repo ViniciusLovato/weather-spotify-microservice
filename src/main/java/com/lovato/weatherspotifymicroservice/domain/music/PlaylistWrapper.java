@@ -16,4 +16,5 @@ public class PlaylistWrapper {
     public void setPlaylists(List<Playlist> playlists) {
         this.playlists = playlists;
     }
+
 }
