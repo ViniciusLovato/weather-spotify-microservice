@@ -1,6 +1,8 @@
 package com.lovato.weatherspotifymicroservice.controller;
 
-import com.lovato.weatherspotifymicroservice.domain.weather.Weather;
+import com.lovato.weatherspotifymicroservice.domain.music.PlaylistResponse;
+import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
+import com.lovato.weatherspotifymicroservice.service.PlaylistClient;
 import com.lovato.weatherspotifymicroservice.service.WeatherClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +16,8 @@ public class WeatherController  {
     @Autowired
     private WeatherClient weatherClient;
 
+    @Autowired
+    private PlaylistClient playlistClient;
 
     @Value("${api.owm.appid}")
     private String appid;
@@ -24,11 +28,17 @@ public class WeatherController  {
      * @return
      */
     @RequestMapping("/weather")
-    public Weather getWeather(@RequestParam("city") String city) {
+    public WeatherResponse getWeather(@RequestParam("city") String city) {
+        return weatherClient.getWeather(city, "metric", appid);
+    }
 
-        Weather weather = weatherClient.getWeather(city, "metric", appid);
-
-
-        return weather;
+    /**
+     *
+     * @param category
+     * @return
+     */
+    @RequestMapping("/playlist")
+    public PlaylistResponse getPlaylist(@RequestParam("category") String category) {
+        return playlistClient.getPlaylist(category);
     }
 }

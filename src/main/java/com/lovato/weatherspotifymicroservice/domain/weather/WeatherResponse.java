@@ -2,7 +2,7 @@ package com.lovato.weatherspotifymicroservice.domain.weather;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Weather {
+public class WeatherResponse {
     @JsonProperty("name")
     private String name;
 
