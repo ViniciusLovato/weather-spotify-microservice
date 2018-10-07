@@ -2,10 +2,11 @@ package com.lovato.weatherspotifymicroservice.domain.music;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Map;
 
 
-public class Track {
+public class Track implements Serializable {
 
     private String name;
 

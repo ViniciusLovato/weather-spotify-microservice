@@ -1,12 +1,14 @@
-package com.lovato.weatherspotifymicroservice.service;
+package com.lovato.weatherspotifymicroservice.service.weather;
 
 import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
+
+import com.lovato.weatherspotifymicroservice.service.weather.impl.WeatherClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "owm-service", url = "http://api.openweathermap.org/data/2.5")
+@FeignClient(name = "owm-service", url = "${api.own.url}", fallback = WeatherClientFallback.class)
 public interface WeatherClient {
 
     /**

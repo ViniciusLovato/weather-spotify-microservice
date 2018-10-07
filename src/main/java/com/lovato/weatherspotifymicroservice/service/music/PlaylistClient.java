@@ -1,4 +1,4 @@
-package com.lovato.weatherspotifymicroservice.service;
+package com.lovato.weatherspotifymicroservice.service.music;
 
 import com.lovato.weatherspotifymicroservice.config.PlaylistClientConfig;
 import com.lovato.weatherspotifymicroservice.domain.music.PlaylistResponse;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "spotify-service", url = "https://api.spotify.com/v1/", configuration = PlaylistClientConfig.class)
+@FeignClient(name = "spotify-service", url = "${api.spotify.url}", configuration = PlaylistClientConfig.class)
 public interface PlaylistClient {
 
     /**

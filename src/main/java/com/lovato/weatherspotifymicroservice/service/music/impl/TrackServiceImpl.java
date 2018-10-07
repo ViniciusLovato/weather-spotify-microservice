@@ -1,46 +1,30 @@
-package com.lovato.weatherspotifymicroservice.service.impl;
+package com.lovato.weatherspotifymicroservice.service.music.impl;
 
 import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.music.PlaylistResponse;
 import com.lovato.weatherspotifymicroservice.domain.music.TrackResponse;
 import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
-import com.lovato.weatherspotifymicroservice.service.PlaylistClient;
-import com.lovato.weatherspotifymicroservice.service.PlaylistService;
-import com.lovato.weatherspotifymicroservice.service.WeatherClient;
+import com.lovato.weatherspotifymicroservice.service.music.PlaylistClient;
+import com.lovato.weatherspotifymicroservice.service.music.TrackService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PlaylistServiceImpl implements PlaylistService {
-
-
-    @Autowired
-    WeatherClient weatherClient;
+public class TrackServiceImpl implements TrackService {
 
     @Autowired
     PlaylistClient playlistClient;
 
-    @Value("${api.owm.appid}")
-    private String appid;
+    @Cacheable(value = "tracks", key = "#weather.getName()")
+    public TrackResponse getTracksByWeather(WeatherResponse weather) {
 
-    @Override
-    public TrackResponse getTracksByCity(String city) {
-        WeatherResponse weatherResponse = weatherClient.getWeather(city, "metric", appid);
-        return getTracksByWeather(weatherResponse);
-    }
-
-    @Override
-    public TrackResponse getTracksByLatLon(Double latitude, Double longitude) {
-        WeatherResponse weatherResponse = weatherClient.getWeather(latitude, longitude, "metric", appid);
-        return getTracksByWeather(weatherResponse);
-    }
-
-    private TrackResponse getTracksByWeather(WeatherResponse weather) {
         Category category =  getCategoryFromTemperature(weather.getWeatherInfo().getTemperature());
         PlaylistResponse playlistResponse = playlistClient.getPlaylist(category.getName());
 
-        // TODO refactor - get all playlists or something diff
+        // Only want the first playlist
         String playlistId = playlistResponse.getPlaylists().get(0).getId();
 
         return playlistClient.getTracks(playlistId);
