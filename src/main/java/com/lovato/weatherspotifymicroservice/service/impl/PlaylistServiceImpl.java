@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlaylistServiceImpl implements PlaylistService {
 
+
     @Autowired
     WeatherClient weatherClient;
 
@@ -40,7 +41,7 @@ public class PlaylistServiceImpl implements PlaylistService {
         PlaylistResponse playlistResponse = playlistClient.getPlaylist(category.getName());
 
         // TODO refactor - get all playlists or something diff
-        String playlistId = playlistResponse.getPlaylistWrapper().getPlaylists().get(0).getId();
+        String playlistId = playlistResponse.getPlaylists().get(0).getId();
 
         return playlistClient.getTracks(playlistId);
     }
