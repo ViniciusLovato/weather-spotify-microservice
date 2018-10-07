@@ -1,14 +1,15 @@
 package com.lovato.weatherspotifymicroservice.service.music;
 
+import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.music.TrackResponse;
-import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
+
 
 public interface TrackService {
 
     /**
      *
-     * @param weather
+     * @param category
      * @return
      */
-    public TrackResponse getTracksByWeather(WeatherResponse weather);
+    public TrackResponse getTracksByCategory(Category category);
 }

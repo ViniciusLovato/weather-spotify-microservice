@@ -1,8 +1,9 @@
 package com.lovato.weatherspotifymicroservice.controller;
 
+import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.music.TrackResponse;
 import com.lovato.weatherspotifymicroservice.service.music.TrackService;
-import com.lovato.weatherspotifymicroservice.service.weather.WeatherService;
+import com.lovato.weatherspotifymicroservice.service.weather.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,8 @@ public class TrackController {
     private TrackService trackService;
 
     @Autowired
-    private WeatherService weatherService;
+    private CategoryService CategoryService;
+
     /**
      *
      * @param city
@@ -24,7 +26,8 @@ public class TrackController {
 
     @RequestMapping("/tracks")
     public TrackResponse getTracksByCity(@RequestParam("city") String city) {
-        return trackService.getTracksByWeather(weatherService.getWeatherByCity(city));
+        Category category = CategoryService.getCategoryFromLocation(city);
+        return trackService.getTracksByCategory(category);
     }
 
     /**
@@ -35,6 +38,7 @@ public class TrackController {
      */
     @RequestMapping("/tracksByCoordinates")
     public TrackResponse getTracksByLatLon(@RequestParam("lat") Double lat, @RequestParam Double lon) {
-        return trackService.getTracksByWeather(weatherService.getWeatherByLatLon(lat, lon));
+        Category category = CategoryService.getCategoryFromLocation(lat, lon);
+        return trackService.getTracksByCategory(category);
     }
 }

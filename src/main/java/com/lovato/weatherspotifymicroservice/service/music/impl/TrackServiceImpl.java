@@ -18,10 +18,8 @@ public class TrackServiceImpl implements TrackService {
     @Autowired
     PlaylistClient playlistClient;
 
-    @Cacheable(value = "tracks", key = "#weather.getName()")
-    public TrackResponse getTracksByWeather(WeatherResponse weather) {
-
-        Category category =  getCategoryFromTemperature(weather.getWeatherInfo().getTemperature());
+    @Cacheable(value = "tracks")
+    public TrackResponse getTracksByCategory(Category category) {
         PlaylistResponse playlistResponse = playlistClient.getPlaylist(category.getName());
 
         // Only want the first playlist
@@ -30,13 +28,5 @@ public class TrackServiceImpl implements TrackService {
         return playlistClient.getTracks(playlistId);
     }
 
-    private Category getCategoryFromTemperature(Double temperature) {
-        if (temperature > 30)
-            return Category.PARTY;
-        else if (temperature > 15)
-            return Category.POP;
-        else if (temperature > 10)
-            return Category.ROCK;
-        return Category.CLASSICAL;
-    }
+
 }

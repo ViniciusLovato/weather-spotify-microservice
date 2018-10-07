@@ -1,5 +1,6 @@
 package com.lovato.weatherspotifymicroservice.service.weather.impl;
 
+
 import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
 import com.lovato.weatherspotifymicroservice.service.weather.WeatherClient;
 import com.lovato.weatherspotifymicroservice.service.weather.WeatherService;
@@ -17,13 +18,14 @@ public class WeatherServiceImpl implements WeatherService {
     private String appid;
 
     @Override
-    public WeatherResponse getWeatherByCity(String city) {
+    public WeatherResponse getWeather(String city) {
         return weatherClient.getWeather(city, "metric", appid);
     }
 
     @Override
-    public WeatherResponse getWeatherByLatLon(Double latitude, Double longitude) {
-
+    public WeatherResponse getWeather(Double latitude, Double longitude) {
         return weatherClient.getWeather(latitude, longitude, "metric", appid);
     }
+
+
 }

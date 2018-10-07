@@ -19,6 +19,7 @@ public class WeatherClientFallback implements WeatherClient {
 
     private  WeatherResponse defaultWeatherResponse(){
         WeatherResponse weatherResponse = new WeatherResponse();
+        weatherResponse.setName("fallback weather");
         WeatherInfo weatherInfo = new WeatherInfo();
         weatherInfo.setTemperature(1.0);
         weatherResponse.setWeatherInfo(weatherInfo);
