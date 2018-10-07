@@ -1,0 +1,13 @@
+language: java
+
+addons:
+  sonarcloud:
+    organization: "viniciuslovato-github"
+    token:
+      secure: "EsvxOSbZ0vtgbwQxBV0io/ZWN/Z8u/kzH9/UugTWC6eQwgjtPCk+OFDoVqiVCpulCLEa57pioVcEOthFfIffZPDL5v6JTjVSLX0ui1w221pL0oExtmD/QdnVl2+qYeaqJH5f9TtSqdqKABxZsPx7Xw6Dl5bdyD/UeALMI5T+8ZqFxQV/TjGtDHtOyioGHMB4e3B+NCLPVnsCOtG2QISZi5QNL1ixmCxIko3Ss2h38DZ5kUL/KYYacWb5H/CbNcQPJcfLk/dD1RW8LW8rQq3Owj/43YT8h+dM0WdlCuWDijBNoZz3SRBHOj35g+JCrf2MvdAk1F5+irSQXgoxWRWdg0XrlGnV5F2hVxkefujSNlpXMT2kWsutkU/vbljCqUgE9sHbOUo+U56kcwW04Y92U8K2WsA6CvqRXq7lc7Yl3hHGBVqhQvFtjw6uCuCJ8TNH44l9T3NbAiVI/iYB2KZTYeC462r1h5Paxhgp524++eNHsiGrHy4DF5WiWXE+UX0Q8/HfwTn/Lc/Od26G3qO2sRxR5oCii3aATGv33Id1Bvpm4QwAPy0EXQFBBnIGGOpullkfziviY4ubVIaT1UsOuVtwS2sJ5b+0fhnagDk0Sn9SPWLsJeH2NSuyYsSZ0AWX5B8m5bBqhyhK/UvH2O3D87zlZXxh5TU1EKmcvXd3lFU="
+
+before_install:
+  - chmod +x mvnw
+
+script:
+  - mvn clean install sonar:sonar
