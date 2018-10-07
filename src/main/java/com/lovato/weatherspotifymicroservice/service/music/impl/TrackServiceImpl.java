@@ -17,7 +17,7 @@ public class TrackServiceImpl implements TrackService {
     @Autowired
     PlaylistClient playlistClient;
 
-    @Cacheable(value = "tracks")
+    @Cacheable(value = "tracks", unless="#result == null")
     public TrackResponse getTracksByCategory(Category category) {
         PlaylistResponse playlistResponse = playlistClient.getPlaylist(category.getName());
 

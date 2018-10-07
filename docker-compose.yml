@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    image: lovato/weather-spotify-microservice
+    ports:
+    - "8080:8080"
+    links:
+    - redis:redis
+  redis:
+    image: redis
+    ports:
+    - "6379:6379"

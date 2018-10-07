@@ -5,7 +5,7 @@
 
 	<groupId>com.lovato</groupId>
 	<artifactId>weather-spotify-microservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>weather-spotify-microservice</name>
@@ -23,7 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
-
+		<docker.image.prefix>lovato</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -92,7 +92,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.3.6</version>
+				<configuration>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<buildArgs>
+						<DEPENDENCY>target/dependency</DEPENDENCY>
+					</buildArgs>
+				</configuration>
+			</plugin>
 		</plugins>
+
+
+
+
 	</build>
 
 
