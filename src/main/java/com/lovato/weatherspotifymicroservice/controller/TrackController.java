@@ -3,7 +3,7 @@ package com.lovato.weatherspotifymicroservice.controller;
 import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.music.TrackResponse;
 import com.lovato.weatherspotifymicroservice.service.music.TrackService;
-import com.lovato.weatherspotifymicroservice.service.weather.CategoryService;
+import com.lovato.weatherspotifymicroservice.service.music.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

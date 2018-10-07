@@ -3,7 +3,6 @@ package com.lovato.weatherspotifymicroservice.service.music.impl;
 import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.music.PlaylistResponse;
 import com.lovato.weatherspotifymicroservice.domain.music.TrackResponse;
-import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
 import com.lovato.weatherspotifymicroservice.service.music.PlaylistClient;
 import com.lovato.weatherspotifymicroservice.service.music.TrackService;
 
@@ -27,6 +26,4 @@ public class TrackServiceImpl implements TrackService {
 
         return playlistClient.getTracks(playlistId);
     }
-
-
 }

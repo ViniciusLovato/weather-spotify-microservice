@@ -1,4 +1,4 @@
-package com.lovato.weatherspotifymicroservice.service.weather;
+package com.lovato.weatherspotifymicroservice.service.music;
 
 import com.lovato.weatherspotifymicroservice.domain.music.Category;
 

@@ -1,8 +1,8 @@
-package com.lovato.weatherspotifymicroservice.service.weather.impl;
+package com.lovato.weatherspotifymicroservice.service.music.impl;
 
 import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.weather.WeatherResponse;
-import com.lovato.weatherspotifymicroservice.service.weather.CategoryService;
+import com.lovato.weatherspotifymicroservice.service.music.CategoryService;
 import com.lovato.weatherspotifymicroservice.service.weather.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
