@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import static java.util.Arrays.asList;
 import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class PlaylistClientFallback implements PlaylistClient {

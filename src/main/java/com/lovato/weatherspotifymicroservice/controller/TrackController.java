@@ -4,6 +4,8 @@ import com.lovato.weatherspotifymicroservice.domain.music.Category;
 import com.lovato.weatherspotifymicroservice.domain.music.TrackResponse;
 import com.lovato.weatherspotifymicroservice.service.music.TrackService;
 import com.lovato.weatherspotifymicroservice.service.music.CategoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +23,7 @@ public class TrackController {
     /**
      *
      * @param city
-     * @return
+     * @return list of tracks according to the temperature of the city
      */
 
     @RequestMapping("/tracks")
@@ -34,7 +36,7 @@ public class TrackController {
      *
      * @param lat
      * @param lon
-     * @return
+     * @return list of tracks according to the temperature of the location
      */
     @RequestMapping("/tracksByCoordinates")
     public TrackResponse getTracksByLatLon(@RequestParam("lat") Double lat, @RequestParam Double lon) {

@@ -13,19 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "spotify-service", url = "${api.spotify.url}", configuration = PlaylistClientConfig.class, fallback = PlaylistClientFallback.class)
 public interface PlaylistClient {
 
-    /**
-     *
-     * @param category
-     * @return
-     */
+
     @RequestMapping(method = RequestMethod.GET, value="/browse/categories/{category}/playlists")
     PlaylistResponse getPlaylist(@RequestParam("category") String category);
 
-    /**
-     *
-     * @param playListId
-     * @return
-     */
+
     @RequestMapping(method = RequestMethod.GET, value="/playlists/{playlist_id}/tracks")
     TrackResponse getTracks(@RequestParam("playlist_id") String playListId);
 }

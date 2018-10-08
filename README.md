@@ -1,6 +1,6 @@
 ### Build e deploy
 
-Para realizar rodar os testes,  *build* e gerar uma imagem docker da aplicação execute o comando
+Para rodar os testes,  *build* e gerar uma imagem docker da aplicação execute o comando
 
 ```
 ./mvnw install dockerfile:build
@@ -13,6 +13,9 @@ docker-compose up
 ```
 
 ### API
+
+Existem dois endpoints na aplicação. Abaixo seguem alguns exemplos de uso.
+
 
 ```
 http://localhost:8080/tracks?city=Campinas

@@ -49,5 +49,36 @@ public class CategoryServiceImplTest {
         Category category = categoryServiceImpl.getCategoryFromLocation(20.0, 20.0);
         assertEquals("When temperature is 20 category should be Party", Category.PARTY, category);
     }
-}
 
+    @Test
+    public void getCorrectPartyCategory() {
+        when(mWeatherInfo.getTemperature()).thenReturn(31.0);
+        when(weatherServiceMock.getWeather("Campinas")).thenReturn(ws);
+        Category category = categoryServiceImpl.getCategoryFromLocation("Campinas");
+        assertEquals("When temperature is 20 category should be ROCK", Category.PARTY, category);
+    }
+
+    @Test
+    public void getCorrectPopCategory() {
+        when(mWeatherInfo.getTemperature()).thenReturn(16.0);
+        when(weatherServiceMock.getWeather("Campinas")).thenReturn(ws);
+        Category category = categoryServiceImpl.getCategoryFromLocation("Campinas");
+        assertEquals("When temperature is 20 category should be ROCK", Category.POP, category);
+    }
+
+    @Test
+    public void getCorrectRockCategory() {
+        when(mWeatherInfo.getTemperature()).thenReturn(13.0);
+        when(weatherServiceMock.getWeather("Campinas")).thenReturn(ws);
+        Category category = categoryServiceImpl.getCategoryFromLocation("Campinas");
+        assertEquals("When temperature is 20 category should be ROCK", Category.ROCK, category);
+    }
+
+    @Test
+    public void getCorrectClassicalCategory() {
+        when(mWeatherInfo.getTemperature()).thenReturn(5.0);
+        when(weatherServiceMock.getWeather("Campinas")).thenReturn(ws);
+        Category category = categoryServiceImpl.getCategoryFromLocation("Campinas");
+        assertEquals("When temperature is 20 category should be ROCK", Category.CLASSICAL, category);
+    }
+}
